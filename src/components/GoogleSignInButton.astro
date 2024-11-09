@@ -1,0 +1,18 @@
+---
+import { auth, provider } from "../firebase/client";
+import { signInWithPopup } from "firebase/auth";
+
+// Este componente necesita ser renderizado en el cliente
+const handleGoogleSignIn = async () => {
+  try {
+    const result = await signInWithPopup(auth, provider);
+    const user = result.user;
+    console.log("Usuario autenticado:", user);
+    // Aquí puedes redirigir al usuario o guardar el token si es necesario
+  } catch (error) {
+    console.error("Error al autenticar con Google:", error);
+  }
+};
+---
+
+<button onClick={handleGoogleSignIn}>Registrar con Google</button>
